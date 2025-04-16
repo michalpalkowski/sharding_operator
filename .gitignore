@@ -4,3 +4,4 @@ setup_command.md
 **/Scarb.lock
 **/Cargo.lock
 .snfoundry_cache/
+**/config.toml

@@ -8,3 +8,12 @@ clap = {version = "4.5.31",features = ["derive","env"]}
 starknet = "0.13.0"
 starknet-crypto = "0.7.4"
 tokio = { version = "1.0.2", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+# katana = { path = "../dojo/bin/katana" }
+saya = { path = "../saya/bin/saya"}
+
+# anyhow = "1.0"
+# url = "2.0"
+# starknet = "0.6"
+# starknet-crypto = "0.6"

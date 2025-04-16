@@ -1,3 +1,11 @@
 #!/bin/bash
 
-cargo run -- --contract-address 0x07c8cf43139e1033f8c1031ab5842c14e91e343d81d9c36ae93fc715a68c903c --proxy-address 0x02b4345dc1ec9f1bd29feac3b446b706de84b4d8b9af95d83d3bd12fd6c4278f --start-block 1 --rpc-url http://localhost:5050/ --event-name GameFinished
+cargo run --release -- \
+  --contract-address 0x038785c9c4f93101a6f1ca968ed253240718b5f77f969cf505d293e96ff1d249 \
+  --proxy-address 0x06f1491009c80bc09ff7e14efbd0ad94d1842fe4887b4d89287b9d5781d78e1b \
+  --start-block 1 \
+  --rpc-url "http://localhost:5050" \
+  --event-name "GameFinished" \
+  --atlantic-key "" \
+  --account-address  \
+  --account-private-key 
