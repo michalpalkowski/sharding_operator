@@ -1,11 +1,11 @@
-use std::sync::Arc;
 use starknet::{
     core::types::{BlockId, Event},
     providers::{
-        jsonrpc::HttpTransport, JsonRpcClient, Provider, ProviderError::StarknetError, Url,
+        JsonRpcClient, Provider, ProviderError::StarknetError, Url, jsonrpc::HttpTransport,
     },
 };
 use starknet_crypto::Felt;
+use std::sync::Arc;
 use tokio::time::sleep;
 
 pub async fn look_for_event(

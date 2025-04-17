@@ -30,17 +30,23 @@ async fn main() {
     let args = Cli::parse();
     let rpc: Url = args.rpc_url.parse().unwrap();
     let initial_event_hash = starknet_keccak("ShardInitialized".as_bytes());
-    let end_event_hash = starknet_keccak(args.event_name.as_bytes());
 
-    if let Some((_initial_event, initial_block)) = look_for_event(args.proxy_address, args.start_block, rpc.clone(), initial_event_hash).await {
+    if let Some((_initial_event, initial_block)) = look_for_event(
+        args.proxy_address,
+        args.start_block,
+        rpc.clone(),
+        initial_event_hash,
+    )
+    .await
+    {
         println!("Initial event found at block {}", initial_block);
-        
+
         // let katana_config = KatanaConfig {
         //     chain: "sharding",
         //     block_time: 5000,
         //     db_dir: "katana.db",
         // };
-        
+
         // if let Err(e) = run_katana(katana_config).await {
         //     eprintln!("Failed to start katana: {}", e);
         //     return;
@@ -48,14 +54,13 @@ async fn main() {
 
         let saya = Sharding {
             rollup_rpc: rpc.clone(),
-            snos_program: PathBuf::from("/home/michal/Documents/saya/programs/snos.json"), 
+            snos_program: PathBuf::from("../saya/programs/snos.json"),
             db_dir: None,
             atlantic_key: args.atlantic_key,
             mock_snos_from_pie: true,
             shard_contract_address: args.proxy_address,
             game_contract_address: args.contract_address,
             event_name: args.event_name,
-            shard_id: 1,
             account_address: args.account_address,
             account_private_key: args.account_private_key,
         };
@@ -64,6 +69,5 @@ async fn main() {
             eprintln!("Failed to run saya: {}", e);
             return;
         }
-        // let _end_event = look_for_event(args.contract_address, initial_block, rpc.clone(), end_event_hash).await;
     }
 }
